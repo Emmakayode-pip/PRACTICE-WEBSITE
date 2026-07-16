@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IPPM membership application form">
+  <title>IPPM Membership Application Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <form id="membershipForm" class="application-form" novalidate>
+      <header class="form-header">
+
+        
+     <div class="brand-panel">
+          <div class="logo-wrap">
+            <img src="logo.jpeg" alt="IPPM Logo" id="organisationLogo">
+            <span class="logo-fallback">IPPM</span>
+          </div>
+
+          <div class="heading-copy">
+            <h1>Institute of Public Peace and Management</h1>
+            <p class="approval-note">With approval of the Federal Ministry of Justice and the Ministry of Education</p>
+            <h2>Membership Application Form</h2>
+          </div>
+        </div>
+
+        <div class="photo-panel">
+          <label for="passportPhoto" class="photo-label">Passport Photo</label>
+          <div class="photo-preview" id="photoPreview" aria-live="polite">
+            <span>Electronic copy acceptable</span>
+          </div>
+          <input id="passportPhoto" name="passportPhoto" type="file" accept="image/png,image/jpeg,image/webp">
+          <button type="button" id="removePhoto" class="text-button" hidden>Remove photo</button>
+        </div>
+      </header>
+
+      <section class="fee-notice" aria-label="Application fee notice">
+        This form must be accompanied by an application fee of ₦10,000 payable by cash or electronic transfer into
+        <strong>IPPM GTCO PLC 0210498847</strong>.
+      </section>
+
+      <section class="form-section">
+        <h3>Section 1. General Information</h3>
+
+        <div class="grid three-columns">
+          <div class="field">
+            <label for="surname">Surname <span aria-hidden="true">*</span></label>
+            <input id="surname" name="surname" type="text" autocomplete="family-name" required>
+          </div>
+          <div class="field">
+            <label for="firstName">First Name <span aria-hidden="true">*</span></label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required>
+          </div>
+          <div class="field">
+            <label for="otherNames">Other Names</label>
+            <input id="otherNames" name="otherNames" type="text" autocomplete="additional-name">
+          </div>
+        </div>
+
+        <div class="grid three-columns">
+          <div class="field">
+            <label for="title">Title</label>
+            <select id="title" name="title">
+              <option value="">Select title</option>
+              <option>Mr</option>
+              <option>Mrs</option>
+              <option>Miss</option>
+              <option>Ms</option>
+              <option>Dr</option>
+              <option>Prof</option>
+              <option>Engr</option>
+              <option>Chief</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="dateOfBirth">Date of Birth <span aria-hidden="true">*</span></label>
+            <input id="dateOfBirth" name="dateOfBirth" type="date" required>
+          </div>
+          <div class="field">
+            <label for="nationality">Nationality <span aria-hidden="true">*</span></label>
+            <input id="nationality" name="nationality" type="text" autocomplete="country-name" required>
+          </div>
+        </div>
+
+        <div class="grid two-columns">
+          <div class="field">
+            <label for="companyAddress">Company Name &amp; Address</label>
+            <textarea id="companyAddress" name="companyAddress" rows="4"></textarea>
+          </div>
+          <div class="field">
+            <label for="correspondenceAddress">Address for Correspondence <span aria-hidden="true">*</span></label>
+            <textarea id="correspondenceAddress" name="correspondenceAddress" rows="4" autocomplete="street-address" required></textarea>
+          </div>
+        </div>
+
+        <div class="grid two-columns">
+          <div class="field">
+            <label for="telephone">Telephone Number(s) <span aria-hidden="true">*</span></label>
+            <input id="telephone" name="telephone" type="tel" autocomplete="tel" placeholder="e.g. +234 801 234 5678" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="jobTitle">Job Title</label>
+          <input id="jobTitle" name="jobTitle" type="text" autocomplete="organization-title">
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h3>Section 2. Academic &amp; Professional Qualifications</h3>
+
+        <p class="instructions">
+          In support of your application, please submit a copy of your CV and relevant academic or professional certificates.
+          Electronic copies or clear camera images are acceptable. Do not enclose original documents.
+        </p>
+
+        <div class="qualification-block">
+          <div class="section-subheading">
+            <div>
+              <h4>Academic Qualifications</h4>
+              <p>Indicate academic qualifications, starting with the highest.</p>
+            </div>
+            <button type="button" class="secondary-button" id="addAcademicRow">+ Add qualification</button>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Name of Institute</th>
+                  <th scope="col">Certificate/Degree Attained</th>
+                  <th scope="col">Year Attained</th>
+                  <th scope="col" class="action-column">Action</th>
+                </tr>
+              </thead>
+              <tbody id="academicRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="qualification-block">
+          <div class="section-subheading">
+            <div>
+              <h4>Professional Qualifications</h4>
+              <p>Examples: ACA, ACIB, ACIL, AIIM or AIPM.</p>
+            </div>
+            <button type="button" class="secondary-button" id="addProfessionalRow">+ Add qualification</button>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Institute/Examining Body</th>
+                  <th scope="col">Qualification Obtained</th>
+                  <th scope="col">Year Attained</th>
+                  <th scope="col" class="action-column">Action</th>
+                </tr>
+              </thead>
+              <tbody id="professionalRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid two-columns supporting-files">
+          <div class="field">
+            <label for="cvFile">Curriculum Vitae</label>
+            <input id="cvFile" name="cvFile" type="file" accept=".pdf,.doc,.docx">
+            <small>PDF, DOC or DOCX.</small>
+          </div>
+          <div class="field">
+            <label for="certificateFiles">Certificates</label>
+            <input id="certificateFiles" name="certificateFiles" type="file" accept="image/*,.pdf" multiple>
+            <small>You may select more than one file.</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section declaration-section">
+        <h3>Section 3. Declaration</h3>
+        <div class="field checkbox-field">
+          <input id="declaration" name="declaration" type="checkbox" required>
+          <label for="declaration">
+            I confirm that the information supplied in this application is accurate and complete.
+          </label>
+        </div>
+        <div class="grid two-columns">
+          <div class="field">
+            <label for="applicantName">Applicant's Full Name <span aria-hidden="true">*</span></label>
+            <input id="applicantName" name="applicantName" type="text" required>
+          </div>
+          <div class="field">
+            <label for="applicationDate">Application Date <span aria-hidden="true">*</span></label>
+            <input id="applicationDate" name="applicationDate" type="date" required>
+          </div>
+        </div>
+      </section>
+
+      <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+
+      <div class="form-actions">
+        <button type="button" class="secondary-button" id="saveDraft">Save draft</button>
+        <button type="button" class="secondary-button" id="clearForm">Clear form</button>
+        <button type="button" class="secondary-button" id="downloadApplication">Download application</button>
+        <button type="button" class="secondary-button" id="printForm">Print</button>
+        <button type="submit" class="primary-button">Validate application</button>
+      </div>
+
+      <footer class="form-footer">
+        <p>.....Through Knowledge . Through Partnership . For Humanity!</p>
+        <span>IPPM</span>
+      </footer>
+    </form>
+  </main>
+
+  <template id="academicRowTemplate">
+    <tr>
+      <td><input type="text" name="academicInstitute[]" aria-label="Academic institution"></td>
+      <td><input type="text" name="academicQualification[]" aria-label="Academic qualification"></td>
+      <td><input type="number" name="academicYear[]" aria-label="Academic qualification year" min="1900" max="2100" inputmode="numeric"></td>
+      <td class="action-column"><button type="button" class="remove-row text-button">Remove</button></td>
+    </tr>
+  </template>
+
+  <template id="professionalRowTemplate">
+    <tr>
+      <td><input type="text" name="professionalInstitute[]" aria-label="Professional institute"></td>
+      <td><input type="text" name="professionalQualification[]" aria-label="Professional qualification"></td>
+      <td><input type="number" name="professionalYear[]" aria-label="Professional qualification year" min="1900" max="2100" inputmode="numeric"></td>
+      <td class="action-column"><button type="button" class="remove-row text-button">Remove</button></td>
+    </tr>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
